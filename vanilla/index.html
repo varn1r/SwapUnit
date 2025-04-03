@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SwapUnit</title>
+</head>
+<body>
+    <input type="number" id="valeur" placeholder="Entrez la valeur">
+    <select id="uniteDepart">
+        <option value="km">Kilomètres</option>
+        <option value="m">Mètres</option>
+    </select>
+    vers
+    <select id="uniteArrivee">
+        <option value="km">Kilomètres</option>
+        <option value="m">Mètres</option>
+    </select>
+    <button onclick="convertir()">Convertir</button>
+    <p id="resultat"></p>
+
+    <script>
+        const facteurs = {
+            km: 1000,
+            m: 1
+        };
+
+        function convertir() {
+            const valeur = parseFloat(document.getElementById("valeur").value);
+            const uniteDepart = document.getElementById("uniteDepart").value;
+            const uniteArrivee = document.getElementById("uniteArrivee").value;
+
+            const resultat = (valeur * facteurs[uniteDepart]) / facteurs[uniteArrivee];
+            document.getElementById("resultat").textContent = `${valeur} ${uniteDepart} = ${resultat} ${uniteArrivee}`;
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>Convertisseur d'unités</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: rgb(207, 232, 240);}
+        input, select, button, p {
+            margin: 9px;
+        }
+    </style>
+</head><title>Convertisseur d'unités</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Quicksand', sans-serif;
+        background-color: rgb(207, 232, 240);
+    }
+    input, select, button, p {
+        margin: 9px;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px; /* Coins arrondis */
+        background: linear-gradient(45deg, #007BFF, #00C6FF); /* Dégradé */
+        color: white; /* Couleur du texte */
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ombre */
+        transition: all 0.3s ease; /* Animation fluide */
+    }
+    button:hover {
+        background: linear-gradient(45deg, #0056b3, #00394d); /* Couleur au survol */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+        transform: scale(1.05); /* Légère mise en avant */
+    }
+  body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: rgb(207, 232, 240);
+  }
+  input, select, button, p {
+      margin: 9px;
+  }
+  button, input[type="button"], input[type="submit"], a.button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px; /* Coins arrondis */
+      background: linear-gradient(45deg, #007BFF, #00C6FF); /* Dégradé */
+      color: white; /* Couleur du texte */
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ombre */
+      transition: all 0.3s ease; /* Animation fluide */
+      text-decoration: none; /* Supprime le soulignement pour les liens */
+      text-align: center; /* Centre le texte pour les liens */
+  }
+  button:hover, input[type="button"]:hover, input[type="submit"]:hover, a.button:hover {
+      background: linear-gradient(45deg, #0056b3, #0096c7); /* Couleur au survol */
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+      transform: scale(1.05); /* Légère mise en avant */
+  }
+</style>
