@@ -2,17 +2,79 @@
 <html>
 <head>
     <title>SwapUnit</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Aligne les éléments en haut */
+            height: 100vh;
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: rgb(207, 240, 226);
+        }
+        input, select, button, p {
+            margin: 9px;
+            padding: 15px 30px; /* Même padding que le bouton */
+            border: none;
+            border-radius: 25px; /* Coins arrondis */
+            background: linear-gradient(45deg, #ffffff, #c4d8f3); /* Dégradé */
+            color: rgb(24, 23, 23); /* Couleur du texte */
+            font-size: 18px; /* Taille du texte */
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+            transition: all 0.3s ease; /* Animation fluide */
+            text-align: center; /* Centre le texte */
+        }
+        input:hover, select:hover, button:hover {
+            background: linear-gradient(45deg, #e6f0ff, #d1e7ff); /* Couleur plus claire au survol */
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+            transform: scale(1.05); /* Légère mise en avant */
+        }
+        select {
+            appearance: none; /* Supprime l'apparence par défaut */
+            -webkit-appearance: none; /* Pour Safari */
+            -moz-appearance: none; /* Pour Firefox */
+        }
+        option {
+            background: white; /* Fond blanc pour les options */
+            color: rgb(24, 23, 23); /* Couleur du texte */
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .header {
+            width: 100%;
+            padding: 20px; /* Ajoute de l'espace interne */
+            text-align: center; /* Centre le texte horizontalement */
+            background: linear-gradient(45deg, #bffcf2, #7eb6d6); /* Dégradé bleu clair */
+            color: white;
+            font-size: 36px; /* Taille du texte */
+            font-weight: bold;
+            border-radius: 0 20px 20px; /* Coins arrondis en bas uniquement */
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); /* Ombre */
+            margin-bottom: 20px; /* Espacement sous le cadre */
+        }
+    </style>
 </head>
 <body>
+    <div class="header">
+        <h1>SwapUnit</h1>
+    </div>
     <input type="number" id="valeur" placeholder="Entrez la valeur">
     <select id="uniteDepart">
         <option value="km">Kilomètres</option>
         <option value="m">Mètres</option>
+        <option value="L">Litre</option>
+        <option value="Dl">Decilitre</option>
     </select>
     vers
     <select id="uniteArrivee">
         <option value="km">Kilomètres</option>
         <option value="m">Mètres</option>
+        <option value="L">Litre</option>
+        <option value="Dl">Decilitre</option>
     </select>
     <button onclick="convertir()">Convertir</button>
     <p id="resultat"></p>
@@ -20,7 +82,9 @@
     <script>
         const facteurs = {
             km: 1000,
-            m: 1
+            m: 1,
+            L: 10,
+            Dl: 1,
         };
 
         function convertir() {
@@ -33,87 +97,4 @@
         }
     </script>
 </body>
-</html><!DOCTYPE html>
-<html>
-<head>
-    <title>Convertisseur d'unités</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Quicksand', sans-serif;
-            background-color: rgb(207, 232, 240);}
-        input, select, button, p {
-            margin: 9px;
-        }
-    </style>
-</head><title>Convertisseur d'unités</title>
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        font-family: 'Quicksand', sans-serif;
-        background-color: rgb(207, 232, 240);
-    }
-    input, select, button, p {
-        margin: 9px;
-    }
-    button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 25px; /* Coins arrondis */
-        background: linear-gradient(45deg, #007BFF, #00C6FF); /* Dégradé */
-        color: white; /* Couleur du texte */
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ombre */
-        transition: all 1s ease; /* Animation fluide */
-    }
-    button:hover {
-        background: linear-gradient(45deg, #0056b3, #00394d); /* Couleur au survol */
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
-        transform: scale(1.05); /* Légère mise en avant */
-    }
-  body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-color: rgb(207, 232, 240);
-  }
-
-  input, select, button, p {
-      margin: 9px;
-  }
-  button, input[type="button"], input[type="submit"], a.button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px; /* Coins arrondis */
-      background: linear-gradient(45deg, #007BFF, #00C6FF); /* Dégradé */
-      color: white; /* Couleur du texte */
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ombre */
-      transition: all 1s ease; /* Animation fluide */
-      text-decoration: none; /* Supprime le soulignement pour les liens */
-      text-align: center; /* Centre le texte pour les liens */
-  }
-  button:hover, input[type="button"]:hover, input[type="submit"]:hover, a.button:hover {
-      background: linear-gradient(45deg, #0056b3, #0096c7); /* Couleur au survol */
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
-      transform: scale(1.05); /* Légère mise en avant */
-  }
-</style>
+</html>
