@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SwapUnit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #fde4e0; /* Couleur rose clair */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header {
+            width: 200%;
+            padding: 2vh;
+            text-align: center;
+            background: linear-gradient(45deg, #4facfe, #00f2fe); /* Dégradé pour l'en-tête */
+            color: white;
+            font-size: 4vh;
+            font-weight: bold;
+            border-radius: 0 0 2vh 2vh;
+            box-shadow: 0 1vh 1vh rgba(0, 0, 0, 0.2);
+            margin-bottom: 2vh;
+            font-family: 'Baloo 2', cursive; /* Apply the balloon font */
+        }
+
+        .header h1 {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        input, select, button, p {
+            margin: 1vh;
+            padding: 2vh 4vw;
+            border: none;
+            border-radius: 2vh;
+            background: linear-gradient(45deg, #ffffff, #c4d8f3);
+            color: rgb(24, 23, 23);
+            font-size: 2vh;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0.6vh 0.8vh rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        input, select, button {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:hover, select:hover, button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        input:hover, select:hover, button:hover {
+            background: linear-gradient(45deg, #e6f0ff, #d1e7ff);
+            box-shadow: 0 0.8vh 1vh rgba(0, 0, 0, 0.3);
+            transform: scale(1.05); /* Légère augmentation de la taille */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button {
+            position: relative;
+            margin: 1vh;
+            padding: 1.5vh 3vw;
+            border: none;
+            border-radius: 2vh;
+            background: linear-gradient(45deg, #ffffff, #c4d8f3);
+            color: rgb(24, 23, 23);
+            font-size: 2vh;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0.6vh 0.8vh rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            max-width: 300px; /* Limite la largeur maximale */
+            opacity: 0; /* Initialement invisible */
+            animation: fadeInButton 1.5s ease-in forwards; /* Animation fade-in */
+        }
+
+        @keyframes fadeInButton {
+            0% {
+                opacity: 0;
+                transform: translateY(20px); /* Départ légèrement en bas */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Position finale */
+            }
+        }
+
+        button.button-clicked {
+            transform: scale(0.9);
+            box-shadow: 0 0.4vh 0.6vh rgba(0, 0, 0, 0.2);
+        }
+
+        #resultat {
+            display: none;
+            font-size: 2vh;
+            color: #333;
+            background: #f9f9f9;
+            padding: 1vh 2vw;
+            border-radius: 1vh;
+            box-shadow: 0 0.4vh 0.6vh rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes moveLines {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .background-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(172, 138, 138, 0.13); /* Reduced opacity for softer lines */
+            z-index: -1; /* Behind all content */
+            animation: moveLines 1.245s linear forwards; /* Animation */
+            filter: blur(1px); /* Adds a slight blur effect */
+        }
+
+        /* Positionnement des lignes */
+        .line1 {
+            top: 10%;
+            left: 0;
+        }
+
+        .line2 {
+            top: 20%;
+            left: 0;
+        }
+
+        .line3 {
+            top: 30%;
+            left: 0;
+        }
+
+        .line4 {
+            top: 40%;
+            left: 0;
+        }
+
+        .line5 {
+            top: 50%;
+            left: 0;
+        }
+
+        .line6 {
+            top: 60%;
+            left: 0;
+        }
+
+        .line7 {
+            top: 70%;
+            left: 0;
+        }
+
+        .line8 {
+            top: 80%;
+            left: 0;
+        }
+
+        .line9 {
+            top: 90%;
+            left: 0;
+        }
+
+        @keyframes moveVerticalLines {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .vertical-line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: rgba(172, 147, 143, 0.137); /* Reduced opacity for softer lines */
+            z-index: -1; /* Behind all content */
+            animation: moveVerticalLines 1.245s linear forwards; /* Animation */
+            filter: blur(1px); /* Adds a slight blur effect */
+        }
+
+        /* Positionnement des lignes verticales */
+        .vline1 {
+            left: 10%;
+            top: 0;
+        }
+
+        .vline2 {
+            left: 20%;
+            top: 0;
+        }
+
+        .vline3 {
+            left: 30%;
+            top: 0;
+        }
+
+        .vline4 {
+            left: 40%;
+            top: 0;
+        }
+
+        .vline5 {
+            left: 50%;
+            top: 0;
+        }
+
+        .vline6 {
+            left: 60%;
+            top: 0;
+        }
+
+        .vline7 {
+            left: 70%;
+            top: 0;
+        }
+
+        .vline8 {
+            left: 80%;
+            top: 0;
+        }
+
+        .vline9 {
+            left: 90%;
+            top: 0;
+        }
+    </style>
+    <style>
+        .header h1 {
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+        }
+    </style>
+    <style>
+        select {
+            width: 90%; /* Ajuste la largeur à 90% de l'écran */
+            max-width: 300px; /* Limite la largeur maximale */
+            margin: 1vh auto; /* Centrer avec des marges verticales */
+            padding: 1vh; /* Ajoute un peu de padding pour le confort */
+            font-size: 1.8vh; /* Taille de police adaptée */
+            border-radius: 2vh; /* Coins arrondis */
+            border: 1px solid #ccc; /* Bordure légère */
+            box-shadow: 0 0.4vh 0.6vh rgba(0, 0, 0, 0.123); /* Ombre subtile */
+            background: linear-gradient(75deg, #ffffff, #dbf5ff); /* Dégradé léger */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="display: inline-block; margin-left: 10px;">SwapUnit</h1>
+    </div>
+    <div class="background-line line1"></div>
+    <div class="background-line line2"></div>
+    <div class="background-line line3"></div>
+    <div class="background-line line4"></div>
+    <div class="background-line line5"></div>
+    <div class="background-line line6"></div>
+    <div class="background-line line7"></div>
+    <div class="background-line line8"></div>
+    <div class="background-line line9"></div>
+    <div class="vertical-line vline1"></div>
+    <div class="vertical-line vline2"></div>
+    <div class="vertical-line vline3"></div>
+    <div class="vertical-line vline4"></div>
+    <div class="vertical-line vline5"></div>
+    <div class="vertical-line vline6"></div>
+    <div class="vertical-line vline7"></div>
+    <div class="vertical-line vline8"></div>
+    <div class="vertical-line vline9"></div>
+    <div class="decoration small"></div>
+    <div class="decoration medium"></div>
+    <div class="decoration large"></div>
+    <input type="number" id="valeur" placeholder="Entrez la valeur">
+    <select id="uniteDepart">
+        <option value="km">Kilomètres</option>
+        <option value="Mm">Mégamètres</option>
+        <option value="Gm">Gigamètres</option> <!-- Ajouté -->
+        <option value="Pm">Pétamètres</option> <!-- Ajouté -->
+        <option value="hm">Hectomètres</option>
+        <option value="dam">Décamètres</option>
+        <option value="m">Mètres</option>
+        <option value="dm">Décimètres</option>
+        <option value="cm">Centimètres</option>
+        <option value="mm">Millimètres</option>
+        <option value="µm">Micromètres</option>
+        <option value="nm">Nanomètres</option>
+        <option value="pm">Picomètres</option>
+        <option value="mile">Miles</option>
+        <option value="yard">Yards</option>
+        <option value="foot">Pieds</option>
+        <option value="inch">Pouces</option>
+        <option value="L">Litres</option>
+        <option value="kL">Kilolitres</option>
+        <option value="gallon">Gallons</option>
+        <option value="Dl">Décilitres</option>
+        <option value="mL">Millilitres</option>
+        <option value="kg">Kilogrammes</option>
+        <option value="lb">Livres</option>
+        <option value="g">Grammes</option>
+        <option value="mg">Milligrammes</option>
+    </select>
+    vers
+    <select id="uniteArrivee">
+        <option value="km">Kilomètres</option>
+        <option value="Mm">Mégamètres</option>
+        <option value="Gm">Gigamètres</option> <!-- Ajouté -->
+        <option value="Pm">Pétamètres</option> <!-- Ajouté -->
+        <option value="hm">Hectomètres</option>
+        <option value="dam">Décamètres</option>
+        <option value="m">Mètres</option>
+        <option value="dm">Décimètres</option>
+        <option value="cm">Centimètres</option>
+        <option value="mm">Millimètres</option>
+        <option value="µm">Micromètres</option>
+        <option value="nm">Nanomètres</option>
+        <option value="pm">Picomètres</option>
+        <option value="mile">Miles</option>
+        <option value="yard">Yards</option>
+        <option value="foot">Pieds</option>
+        <option value="inch">Pouces</option>
+        <option value="L">Litres</option>
+        <option value="kL">Kilolitres</option>
+        <option value="gallon">Gallons</option>
+        <option value="Dl">Décilitres</option>
+        <option value="mL">Millilitres</option>
+        <option value="kg">Kilogrammes</option>
+        <option value="lb">Livres</option>
+        <option value="g">Grammes</option>
+        <option value="mg">Milligrammes</option>
+    </select>
+    <button onclick="convertir()">Convertir</button>
+    <p id="resultat"></p>
+
+    <script>
+        const facteurs = {
+            Pm: 1e15,       // 1 Pm = 10^15 mm
+            Gm: 1e12,       // 1 Gm = 10^12 mm
+            Mm: 1e9,        // 1 Mm = 10^9 mm
+            km: 1e6,        // 1 km = 10^6 mm
+            hm: 1e5,        // 1 hm = 10^5 mm
+            dam: 1e4,       // 1 dam = 10^4 mm
+            m: 1e3,         // 1 m = 10^3 mm
+            dm: 1e2,        // 1 dm = 10^2 mm
+            cm: 10,         // 1 cm = 10 mm
+            mm: 1,          // 1 mm = 1 mm
+            µm: 0.001,      // 1 µm = 0.001 mm
+            nm: 0.000001,   // 1 nm = 0.000001 mm
+            pm: 0.000000001,// 1 pm = 0.000000001 mm
+            mile: 1609344,  // 1 mile = 1,609,344 mm
+            yard: 914.4,    // 1 yard = 914.4 mm
+            foot: 304.8,    // 1 foot = 304.8 mm
+            inch: 25.4,     // 1 inch = 25.4 mm
+            L: 1000,        // 1 L = 1,000 mL
+            kL: 1000000,    // 1 kL = 1,000,000 mL
+            gallon: 3785.41,// 1 gallon = 3,785.41 mL
+            Dl: 100,        // 1 Dl = 100 mL
+            mL: 1,          // 1 mL = 1 mL
+            kg: 1000000,    // 1 kg = 1,000,000 mg
+            lb: 453592,     // 1 lb = 453,592 mg
+            g: 1000,        // 1 g = 1,000 mg
+            mg: 1,          // 1 mg = 1 mg
+        };
+
+        document.querySelector("button").addEventListener("mousedown", () => {
+            const bouton = document.querySelector("button");
+            bouton.classList.add("button-clicked");
+        });
+
+        document.querySelector("button").addEventListener("mouseup", () => {
+            const bouton = document.querySelector("button");
+            bouton.classList.remove("button-clicked");
+        });
+
+        document.querySelector("button").addEventListener("mouseleave", () => {
+            const bouton = document.querySelector("button");
+            bouton.classList.remove("button-clicked");
+        });
+
+        function convertir() {
+            const valeur = parseFloat(document.getElementById("valeur").value);
+            const uniteDepart = document.getElementById("uniteDepart").value;
+            const uniteArrivee = document.getElementById("uniteArrivee").value;
+
+            // Vérification de compatibilité
+            const isVolume = (unit) => unit === "L" || unit === "Dl" || unit === "mL" || unit === "gallon";
+            const isLength = (unit) => unit === "km" || unit === "hm" || unit === "dam" || unit === "m" || unit === "dm" || unit === "cm" || unit === "mm" || unit === "mile" || unit === "yard" || unit === "foot" || unit === "inch";
+            const isWeight = (unit) => unit === "kg" || unit === "g" || unit === "mg" || unit === "lb";
+
+            if (
+                (isVolume(uniteDepart) && (isLength(uniteArrivee) || isWeight(uniteArrivee))) ||
+                (isLength(uniteDepart) && (isVolume(uniteArrivee) || isWeight(uniteArrivee))) ||
+                (isWeight(uniteDepart) && (isVolume(uniteArrivee) || isLength(uniteArrivee)))
+            ) {
+                document.getElementById("resultat").textContent = "Les unités sélectionnées ne sont pas compatibles.";
+                document.getElementById("resultat").style.display = "block"; // Afficher le paragraphe
+                return;
+            }
+
+            const resultat = (valeur * facteurs[uniteDepart]) / facteurs[uniteArrivee];
+            document.getElementById("resultat").textContent = `${valeur} ${uniteDepart} = ${resultat} ${uniteArrivee}`;
+            document.getElementById("resultat").style.display = "block"; // Afficher le paragraphe
+        }
+    </script>
+</body>
+</html>
